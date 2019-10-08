@@ -1,0 +1,22 @@
+service/networking/hello-world.yaml 
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: hello-world
+spec:
+  selector:
+    matchLabels:
+      run: hello-world
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        run: hello-world
+    spec:
+      containers:
+      - name: hello-world
+        image: clusterneteacr.azurecr.io/hello-world
+        ports:
+        - containerPort: 80
+
